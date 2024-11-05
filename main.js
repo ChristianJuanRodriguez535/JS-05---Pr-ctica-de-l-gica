@@ -8,7 +8,7 @@ function dataUsuario() {
 
     const nombreUsuario = prompt("Hola usuario, por favor ingresa tu nombre ");
 
-    const edadUsuario =  prompt("Ahora, por favor ingresa tu nombre ");
+    const edadUsuario =  prompt("Ahora, por favor ingresa tu Edad ");
 
     const peliculasFavs = [];
 
@@ -48,3 +48,27 @@ dataUsuario ();
 //& Problema 2: Highest number 
 
 //* Write a program that asks for 10 numbers. Using logical operators and any other JavaScript functions/structures you've seen before, determine an output the highst of those numbers
+
+function numeroMasAlto(){
+
+    const numeros = [];
+    for (let i = 0; i < 10; i++){
+        
+        const numerosIngresados = parseFloat(prompt(`Ingresa los números por favor ${i + 1}:`));
+
+        numeros.push(numerosIngresados); //&Almacena los números en el arreglo
+    }
+
+    let encontrarMasAlto = numeros[0]; // ?la variable encotrarMasAlto guarda al numero mas alto, comenzamos con el primer numero y comparamos con los demas elementos
+
+    for( let i = 1; i < numeros.length; i++){
+
+        if (numeros[i] > encontrarMasAlto){
+            encontrarMasAlto = numeros[i];
+        }
+    }
+
+    console.log(`El número más algo es: ${encontrarMasAlto}`);
+}
+
+const numeros = [1,2,3,4,5,6,7,8,9,10];
