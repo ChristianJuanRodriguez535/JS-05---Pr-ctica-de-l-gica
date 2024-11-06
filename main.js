@@ -21,7 +21,7 @@ function dataUsuario() {
 
 
         peliculasFavs.push(peli.trim());
-        //&Agrega las peliculas al arreglo
+        //&Agrega las peliculas al arreglo y elmina los espacios en blanco al principio y final
 
         const masPelis = prompt ("Quieres agregar más peliculas ? Responde (si/no)");
 
@@ -114,5 +114,81 @@ function iniciarAlarma(){
 
 
     }, 1000); 
+};
+
+//& Ejercicio 4: Palindrome
+
+//* Write a program that prompts for a word or sentence (it can be capitalized, have spaces and punctuation). Figure out if the sentence/word is a palindrome or not. Ignoring punctuation, spaces and capitalized letters.
+
+function esUnPalindromo (palabra) {
+
+    //? Tenemos que ignorar los espacios signos de puntuación y convertir mayusculas a minusculas 
+
+    let convertirPalabra = palabra.replace(/[^a-zA-ZáéíóúüñÁÉÍÓÚÜÑ]/g, '').toLowerCase();
+
+    //! ^ negación,cualquier caracter que no este entre a y z o A y Z. ''Los caracteres encontrados seran eliminados
+
+    //^ towerCase covierte todo a minisculas
+
+    let palabraInvertida = convertirPalabra.split('').reverse().join('');
+
+    //? convertimos la cadena convertirPalabra en un array, despues se invierte el orden de los elementos y con join se juntan en una nueva cadena
+
+    //comparamos 
+
+    return convertirPalabra === palabraInvertida;
+}
+
+let ingresaPalabra = prompt ("Escribe una palabra por favor").trim();
+
+if (!ingresaPalabra){
+    console.log("No se ingreso ninguna palabra.");
+} else if (esUnPalindromo(ingresaPalabra)){
+
+    console.log(ingresaPalabra + "SI es un palindromo");
+
+} else {
+
+    console.log(ingresaPalabra + "NO es un palindromo");
 
 }
+
+//& Ejercicio 5: Factorial 
+
+//* Write a program that prompts for an intenger number n. Where 1 <= n. Solve this using recursion
+
+function factorial (num) {
+
+    if (num <= 1) return 1;
+    
+    //? Es la condicion para a recursio. Si num es 1 o menor regresa a 1.
+
+    return num * factorial(num - 1);
+
+}
+
+let numeroFactorial = parseInt (prompt("Ingresa un número entero para calcular su facorial ( n => 1): "));
+
+if (isNaN(numeroFactorial)|| numeroFactorial < 1 ){
+    console.log("Número no valido, por favor ingrsa un número mayor o igual a 1. ");
+
+} else {
+
+    console.log(`El factorial de ${numeroFactorial} es: ${factorial(numeroFactorial)}`);
+}
+
+//& Ejercicio 6: Flat array
+
+//* Write a program that takes the following  nested  matrix and flattens it  (makes it 1D array). Use any type of algorithm you want like callbacks, recursion, etc...
+
+// let multiDimension = [1,[2,3[4,5[6]]]];
+
+//! En la clase de hoy (05/11/2024)mensionaron que se podia usar flat
+
+//^ Si usamos flat(), es un metodo que devuelve una nueva matriz con todos los elementos de la matriz original aplanados de manera recursiva 
+
+let multiDimensio = [1,[2,3[4,5[6]]]];
+
+let matrizAplanada = multiDimensio.flat(Infinity); //& Infinity, esto es que se hace de manera indefinida hasta que no haya mas subarrays 
+
+console.log(matrizAplanada);
